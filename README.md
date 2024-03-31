@@ -20,7 +20,7 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 During software acquisition both the sample repositories and the sap-automation repositories need to be present on the deployer-agent. Each of the repositories will be mapped using the following:
 
-# WATCH THIS - GEORGE
+# WATCH THIS - GEORGE 
 
 - sap-automation will be mapped to ```/sap-automation```
 - customer configuration repository will be mapped to ```/config```
