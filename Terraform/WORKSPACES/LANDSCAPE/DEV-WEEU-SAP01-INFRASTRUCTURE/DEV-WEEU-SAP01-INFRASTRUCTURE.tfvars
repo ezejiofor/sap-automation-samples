@@ -71,7 +71,7 @@ location = "westeurope"
 #########################################################################################
 
 # The network logical name is mandatory - it is used in the naming convention and should map to the workload virtual network logical name
-network_logical_name = "SAP01"
+network_logical_name = "SAP09"
 
 # The name is optional - it can be used to override the default naming
 #network_name = ""
