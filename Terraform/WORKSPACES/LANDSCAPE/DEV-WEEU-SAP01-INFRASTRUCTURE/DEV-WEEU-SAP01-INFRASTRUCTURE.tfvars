@@ -83,7 +83,7 @@ network_logical_name = "SAP01"
 network_address_space = "10.110.0.0/16"
 
 # use_private_endpoint is a boolean flag controlling if the key vaults and storage accounts have private endpoints
-use_private_endpoint = true
+use_private_endpoint = false
 
 # use_service_endpoint is a boolean flag controlling if the key vaults and storage accounts have service endpoints
 use_service_endpoint = true
