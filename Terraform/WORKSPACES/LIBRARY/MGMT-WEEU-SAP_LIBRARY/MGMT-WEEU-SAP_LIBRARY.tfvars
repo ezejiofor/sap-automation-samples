@@ -173,7 +173,7 @@ environment = "MGMT"
 location = "westeurope"
 
 #Defines the DNS suffix for the resources
-dns_label = "azure.contoso.net"
+dns_label = "azure.sdaf.contoso.net"
 
 # use_private_endpoint defines that the storage accounts and key vaults have private endpoints enabled
 use_private_endpoint = false
