@@ -14,7 +14,7 @@
 ---
 
 # bom_base_name is the name of the SAP Application Bill of Materials file
-bom_base_name:                 S42022SPS00_v0001ms
+bom_base_name:                 S42023SPS00_v0001ms
 
 BOM_directory:                 ${HOME}/Azure_SAP_Automated_Deployment/samples/SAP
 
