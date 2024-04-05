@@ -46,7 +46,7 @@ location = "westeurope"
 #name_override_file = ""
 
 # save_naming_information,defines that a json formatted file defining the resource names will be created
-save_naming_information = true
+save_naming_information = false
 
 # custom_prefix defines the prefix that will be added to the resource names
 #custom_prefix = ""
@@ -55,10 +55,10 @@ save_naming_information = true
 use_prefix = true
 
 # use_zonal_markers defines if a zonal markers will be added to the virtual machine resource names
-use_zonal_markers = false
+use_zonal_markers = true
 
 # use_secondary_ips controls if the virtual machines should be deployed with two IP addresses. Required for SAP Virtual Hostname support
-use_secondary_ips = true
+use_secondary_ips = false
 
 # subscription is the subscription in which the system will be deployed (informational only)
 #subscription = ""
@@ -106,7 +106,7 @@ network_logical_name = "SAP01"
 use_loadbalancers_for_standalone_deployments = true
 
 # use_private_endpoint is a boolean flag controlling if the key vaults and storage accounts have private endpoints
-use_private_endpoint = true
+#use_private_endpoint = false
 
 
 #########################################################################################
@@ -118,26 +118,8 @@ use_private_endpoint = true
 # scs_cluster_type defines cluster quorum type; AFA (Azure Fencing Agent), ASD (Azure Shared Disk), ISCSI
 scs_cluster_type = "AFA"
 
-#scs_cluster_disk_lun defines the LUN number for the SAP Central Services cluster disk
-scs_cluster_disk_lun = 5
-
-#scs_cluster_disk_size defines the size for the SAP Central Services cluster disk
-scs_cluster_disk_size = 128
-
-#scs_cluster_disk_type defines the storage_account_type of the shared disk for the SAP Central Services cluster
-scs_cluster_disk_type = "Premium_ZRS"
-
 # database_cluster_type defines cluster quorum type; AFA (Azure Fencing Agent), ASD (Azure Shared Disk), ISCSI
 database_cluster_type = "AFA"
-
-#database_cluster_disk_lun defines the LUN number for the database cluster disk
-database_cluster_disk_lun = 8
-
-#database_cluster_disk_size defines the size for the database cluster disk
-database_cluster_disk_size = 128
-
-#database_cluster_disk_type defines the storage_account_type of the shared disk for the Database cluster
-database_cluster_disk_type = "Premium_ZRS"
 
 # use_msi_for_clusters if defined will use managed service identity for the Pacemaker cluster fencing
 use_msi_for_clusters = true
@@ -148,20 +130,6 @@ use_msi_for_clusters = true
 # use_simple_mount specifies if Simple mounts are used (Applicable for SLES 15 SP# or newer)
 use_simple_mount = false
 
-# Configure fencing device based on the fence agent fence_kdump for both SCS and DB clusters
-use_fence_kdump = false
-
-# Default size of the kdump disk which will be attached to the VMs which are part DB cluster
-use_fence_kdump_size_gb_db = 128
-
-# Default LUN number of the kdump disk which will be attached to the VMs which are part of DB cluster
-use_fence_kdump_lun_db = 8
-
-# Default size of the kdump disk which will be attached to the VMs which are part of SCS cluster
-use_fence_kdump_size_gb_scs = 64
-
-# Default LUN number of the kdump disk which will be attached to the VMs which are part of SCS cluster
-use_fence_kdump_lun_scs = 4
 
 #########################################################################################
 #                                                                                       #
@@ -169,7 +137,7 @@ use_fence_kdump_lun_scs = 4
 #                                                                                       #
 #########################################################################################
 
-database_sid = "HDB"
+#database_sid = ""
 
 # database_platform defines the database backend, supported values are
 # - HANA
@@ -185,11 +153,11 @@ database_platform = "HANA"
 database_server_count = 1
 
 # database_high_availability is a boolean flag controlling if the database tier is deployed highly available (more than 1 node)
-database_high_availability = false
+database_high_availability = true
 
 # For M series VMs use the SKU name for instance "M32ts"
 # If using a custom disk sizing populate with the node name for Database you have used in the file custom_disk_sizes_filename
-database_size = "E20ds_v4"
+database_size = "Default"
 
 # database_vm_sku, if provided defines the Virtual Machine SKU to use for the database virtual machines"
 #database_vm_sku = ""
@@ -264,15 +232,15 @@ database_vm_use_DHCP = true
 database_vm_image = {
   os_type = "LINUX",
   source_image_id = "",
-  publisher = "SUSE",
-  offer = "sles-sap-15-sp4",
-  sku = "gen2",
+  publisher = "RedHat",
+  offer = "RHEL-SAP-HA",
+  sku = "88sapha-gen2",
   version = "latest",
   type = "marketplace"
 }
 
 # database_vm_zones is an optional list defining the availability zones to deploy the database servers
-database_vm_zones = ["1"]
+database_vm_zones = ["1", "2"]
 
 # Optional, Defines the default authentication model for the Database VMs (key/password)
 #database_vm_authentication_type = ""
@@ -281,7 +249,7 @@ database_vm_zones = ["1"]
 #database_vm_avset_arm_ids = []
 
 # Optional, Defines the that the database virtual machines will not be placed in a proximity placement group
-database_use_ppg = true
+database_use_ppg = false
 
 # Optional, Defines the that the database virtual machines will not be placed in an availability set
 database_use_avset = false
@@ -289,6 +257,7 @@ database_use_avset = false
 # Optional, Defines if the tags for the database virtual machines
 #database_tags = {}
 
+#database_HANA_use_ANF_scaleout_scenario = ""
 
 #########################################################################################
 #                                                                                       #
@@ -299,7 +268,7 @@ database_use_avset = false
 app_tier_sizing_dictionary_key = "Optimized"
 
 # enable_app_tier_deployment is a boolean flag controlling if the application tier should be deployed
-enable_app_tier_deployment = true
+enable_app_tier_deployment = false
 
 # app_tier_use_DHCP is a boolean flag controlling if Azure subnet provided IP addresses should be used (true)
 app_tier_use_DHCP = true
@@ -314,23 +283,23 @@ sid = "X00"
 #########################################################################################
 
 # scs_server_count defines how many SCS servers to deploy
-scs_server_count = 1
+scs_server_count = "1"
 
 # scs_high_availability is a boolean flag controlling if SCS should be highly available
-scs_high_availability = false
+scs_high_availability = true
 
 # scs_instance_number defines the instance number for SCS
-scs_instance_number = "01"
+scs_instance_number = "00"
 
 # ers_instance_number defines the instance number for ERS
-ers_instance_number = "02"
+ers_instance_number = "01"
 
 # pas_instance_number defines the instance number for PAS
 pas_instance_number = "00"
 
 
 # scs_server_zones is an optional list defining the availability zones to which deploy the SCS servers
-scs_server_zones = ["1"]
+scs_server_zones = ["1", "2"]
 
 # scs_server_sku, if defined provides the SKU to use for the SCS servers
 #scs_server_sku = ""
@@ -341,9 +310,9 @@ scs_server_zones = ["1"]
 scs_server_image = {
   os_type = "LINUX",
   source_image_id = "",
-  publisher = "SUSE",
-  offer = "sles-sap-15-sp4",
-  sku = "gen2",
+  publisher = "RedHat",
+  offer = "RHEL-SAP-HA",
+  sku = "88sapha-gen2",
   version = "latest",
   type = "marketplace"
 }
@@ -380,10 +349,10 @@ scs_server_use_avset = false
 #########################################################################################
 
 # application_server_count defines how many application servers to deploy
-application_server_count = 2
+application_server_count = 1
 
 # application_server_zones is an optional list defining the availability zones to which deploy the application servers
-application_server_zones = ["1"]
+application_server_zones = ["1", "2"]
 
 # application_server_sku, if defined provides the SKU to use for the application servers
 #application_server_sku = ""
@@ -424,9 +393,9 @@ application_server_use_avset = true
 application_server_image = {
   os_type = "LINUX",
   source_image_id = "",
-  publisher = "SUSE",
-  offer = "sles-sap-15-sp4",
-  sku = "gen2",
+  publisher = "RedHat",
+  offer = "RHEL-SAP-HA",
+  sku = "88sapha-gen2",
   version = "latest",
   type = "marketplace"
 }
@@ -440,10 +409,10 @@ application_server_image = {
 ############################################################################################
 
 # webdispatcher_server_count defines how many web dispatchers to deploy
-webdispatcher_server_count = 1
+webdispatcher_server_count = 0
 
 # web_sid is the Web Dispatcher SID
-web_sid = "W00"
+#web_sid = ""
 
 # web_instance_number defines the web instance number
 web_instance_number = "00"
@@ -472,26 +441,18 @@ web_instance_number = "00"
 webdispatcher_server_use_ppg = false
 
 #webdispatcher_server_use_avset defines the that the Web dispatcher virtual machines will be placed in an availability set
-webdispatcher_server_use_avset = false
+webdispatcher_server_use_avset = true
 
 # webdispatcher_server_tags, if defined provides the tags to be associated to the web dispatchers
 #webdispatcher_server_tags = {}
 
 # webdispatcher_server_zones is an optional list defining the availability zones to which deploy the web dispatchers
-webdispatcher_server_zones = ["1"]
+#webdispatcher_server_zones = []
 
 # The vm_image defines the Virtual machine image to use for the web dispatchers,
 # if source_image_id is specified the deployment will use the custom image provided,
 # in this case os_type must also be specified
-webdispatcher_server_image = {
-  os_type = "LINUX",
-  source_image_id = "",
-  publisher = "SUSE",
-  offer = "sles-sap-15-sp4",
-  sku = "gen2",
-  version = "latest",
-  type = "marketplace"
-}
+#webdispatcher_server_image = {}
 
 
 
@@ -503,7 +464,7 @@ webdispatcher_server_image = {
 
 # resource_offset can be used to provide an offset for resource naming
 # server#, disk#
-resource_offset = 1
+#resource_offset = 0
 
 # vm_disk_encryption_set_id if defined defines the custom encryption key
 #vm_disk_encryption_set_id = ""
@@ -513,9 +474,6 @@ deploy_application_security_groups = true
 
 # deploy_v1_monitoring_extension Defines if the Microsoft.AzureCAT.AzureEnhancedMonitoring extension will be deployed
 deploy_v1_monitoring_extension = true
-
-# dns_a_records_for_secondary_names defines if DNS records should be created for the virtual host names
-dns_a_records_for_secondary_names = true
 
 #########################################################################################
 #                                                                                       #
@@ -529,7 +487,7 @@ dns_a_records_for_secondary_names = true
 # NFS indicates that a custom solution is used for NFS
 NFS_provider = "AFS"
 # sapmnt_volume_size defines the size of the sapmnt volume in GB
-sapmnt_volume_size = 128
+#sapmnt_volume_size = 0
 
 # azure_files_sapmnt_id defines the Resource identifier for Azure Files for NFS storage account for sapmnt
 #azure_files_sapmnt_id = ""
@@ -540,18 +498,8 @@ sapmnt_volume_size = 128
 # use_random_id_for_storageaccounts defines if the sapmnt storage account name will have a random suffix
 use_random_id_for_storageaccounts = true
 
-#########################################################################################
-#                                                                                       #
-#  ANF                                                                                  #
-#                                                                                       #
-#########################################################################################
-
 # ANF_HANA_use_AVG defines if the ANF volume will be created in an Application Volume Group
 ANF_HANA_use_AVG = false
-
-# ANF_HANA_use_Zones defines if the ANF volume will be created in an Availability zones
-ANF_HANA_use_Zones = true
-
 
 #########################################################################################
 #                                                                                       #
@@ -573,9 +521,6 @@ ANF_HANA_use_Zones = true
 
 # ANF_HANA_data_volume_name, if defined, provides the name of the HANA data volume(s).
 #ANF_HANA_data_volume_name = ""
-
-# Number of ANF Data Volumes
-ANF_HANA_data_volume_count = 1
 
 
 #########################################################################################
@@ -599,8 +544,6 @@ ANF_HANA_data_volume_count = 1
 # ANF_HANA_log_volume_name, if defined, provides the name of the HANA log volume(s).
 #ANF_HANA_log_volume_name = ""
 
-# Number of ANF Data Volumes
-ANF_HANA_log_volume_count = 1
 
 #########################################################################################
 #                                                                                       #
@@ -697,29 +640,25 @@ ANF_HANA_log_volume_count = 1
 # nsg_asg_with_vnet if set controls where the Application Security Groups are created
 nsg_asg_with_vnet = false
 
-#########################################################################################
 # RESOURCE GROUP
 # The two resource group name and arm_id can be used to control the naming and the creation of the resource group
 # The resourcegroup_name value is optional, it can be used to override the name of the resource group that will be provisioned
 # The resourcegroup_name arm_id is optional, it can be used to provide an existing resource group for the deployment
-#########################################################################################
 
 #resourcegroup_name = ""
 
 #resourcegroup_arm_id = ""
 
-#########################################################################################
-#                                                                                       #
-#  PPG                                                                                  #
-#    The proximity placement group names and arm_ids are optional can be used to
-#    control the naming and the creation of the proximity placement groups
-#                                                                                       #
-#########################################################################################
+# PPG
+# The proximity placement group names and arm_ids are optional can be used to
+# control the naming and the creation of the proximity placement groups
+# The proximityplacementgroup_names list value is optional,
+# it can be used to override the name of the proximity placement groups that will be provisioned
+# The proximityplacementgroup_arm_ids list value is optional,
+# it can be used to provide an existing proximity placement groups for the deployment
 
-# If provided, names of the proximity placement groups
 #proximityplacementgroup_names = []
 
-# If provided, azure resource ids for the proximity placement groups
 #proximityplacementgroup_arm_ids = []
 
 # Boolean value indicating if an proximity placement group should be used for the app tier VMs
@@ -871,24 +810,22 @@ enable_purge_control_for_keyvaults = false
 
 #########################################################################################
 #                                                                                       #
-#  Terraform deployment parameters                                                      #
+#  Terraform deploy parameters                                                          #
 #                                                                                       #
 #########################################################################################
 
+# - tfstate_resource_id is the Azure resource identifier for the Storage account in the SAP Library
+#   that will contain the Terraform state files
+# - deployer_tfstate_key is the state file name for the deployer
+# - landscape_tfstate_key is the state file name for the workload deployment
 # These are required parameters, if using the deployment scripts they will be auto populated otherwise they need to be entered
 
-# tfstate_resource_id is the Azure resource identifier for the Storage account in the SAP Library
-# that will contain the Terraform state files
 #tfstate_resource_id = null
 
-# deployer_tfstate_key is the state file name for the deployer
 #deployer_tfstate_key = null
 
-# landscape_tfstate_key is the state file name for the workload deployment
 #landscape_tfstate_key = null
 
-# use_spn defines if the deployments are performed using Service Principals or the deployer's managed identiry, true=SPN, false=MSI
-use_spn = true
 
 #########################################################################################
 #                                                                                       #
@@ -910,38 +847,4 @@ use_spn = true
 ############################################################################################
 
 # These tags will be applied to all resources
-tags = {
-  "DeployedBy" = "SDAF",
-}
-
-
-#########################################################################################
-#                                                                                       #
-#  Scaleout variables                                                                   #
-#                                                                                       #
-#########################################################################################
-
-#If true, the database tier will be configured for scaleout scenario
-database_HANA_use_ANF_scaleout_scenario = false
-
-# Defined the standbynode count in a scaleout scenario
-stand_by_node_count = 0
-
-
-#########################################################################################
-#                                                                                       #
-#  AMS variables                                                                        #
-#                                                                                       #
-#########################################################################################
-
-# If defined, will enable prometheus high availability cluster monitoring
-enable_ha_monitoring = false
-
-# If defined, will enable prometheus operating system level monitoring
-enable_os_monitoring = false
-
-# If defined, will use the specified Azure Monitor for SAP instance, else will use the AMS instance in the workload zone.
-#ams_resource_id = ""
-
-
-
+#tags = {}
