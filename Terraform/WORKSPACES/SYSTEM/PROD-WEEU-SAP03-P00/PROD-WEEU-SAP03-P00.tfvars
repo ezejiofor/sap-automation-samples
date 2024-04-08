@@ -34,13 +34,13 @@
 #########################################################################################
 
 # The environment value is a mandatory field, it is used for partitioning the environments, for example (PROD and NP)
-environment = "PRD"
+environment = "PROD"
 
 # The location value is a mandatory field, it is used to control where the resources are deployed
 location = "westeurope"
 
 #If you want to customize the disk sizes for VMs use the following parameter to specify the custom sizing file.
-custom_disk_sizes_filename = "../../../WORKSPACES/CONFIGURATIONS/anf_sizes.json"
+#custom_disk_sizes_filename = ""
 
 #If you want to provide a custom naming json use the following parameter.
 #name_override_file = ""
@@ -55,7 +55,7 @@ save_naming_information = false
 use_prefix = true
 
 # use_zonal_markers defines if a zonal markers will be added to the virtual machine resource names
-use_zonal_markers = false
+use_zonal_markers = true
 
 # use_secondary_ips controls if the virtual machines should be deployed with two IP addresses. Required for SAP Virtual Hostname support
 use_secondary_ips = false
@@ -103,7 +103,7 @@ upgrade_packages = false
 network_logical_name = "SAP03"
 
 # use_loadbalancers_for_standalone_deployments is a boolean flag that can be used to control if standalone deployments (non HA) will have load balancers
-use_loadbalancers_for_standalone_deployments = true
+use_loadbalancers_for_standalone_deployments = false
 
 # use_private_endpoint is a boolean flag controlling if the key vaults and storage accounts have private endpoints
 #use_private_endpoint = false
@@ -185,17 +185,17 @@ database_platform = "HANA"
 database_server_count = 1
 
 # database_high_availability is a boolean flag controlling if the database tier is deployed highly available (more than 1 node)
-database_high_availability = true
+database_high_availability = false
 
 # For M series VMs use the SKU name for instance "M32ts"
 # If using a custom disk sizing populate with the node name for Database you have used in the file custom_disk_sizes_filename
-database_size = "E20ds_v4"
+database_size = "Default"
 
 # database_vm_sku, if provided defines the Virtual Machine SKU to use for the database virtual machines"
 #database_vm_sku = ""
 
 # database_instance_number if provided defines the instance number of the HANA database
-database_instance_number = "00"
+#database_instance_number = ""
 
 # database_vm_use_DHCP is a boolean flag controlling if Azure subnet provided IP addresses should be used (true)
 database_vm_use_DHCP = true
@@ -264,8 +264,8 @@ database_vm_use_DHCP = true
 database_vm_image = {
   os_type = "LINUX",
   source_image_id = "",
-  publisher = "RedHat",
-  offer = "RHEL-SAP-HA",
+  publisher = "SUSE",
+  offer = "sles-sap-15-sp3",
   sku = "gen2",
   version = "latest",
   type = "marketplace"
@@ -284,7 +284,7 @@ database_vm_zones = ["3"]
 database_use_ppg = false
 
 # Optional, Defines the that the database virtual machines will not be placed in an availability set
-database_use_avset = false
+database_use_avset = true
 
 # Optional, Defines if the tags for the database virtual machines
 #database_tags = {}
@@ -305,7 +305,7 @@ enable_app_tier_deployment = true
 app_tier_use_DHCP = true
 
 # sid is a mandatory field that defines the SAP Application SID
-sid = "P02"
+sid = "P00"
 
 #########################################################################################
 #                                                                                       #
@@ -320,10 +320,10 @@ scs_server_count = 1
 scs_high_availability = true
 
 # scs_instance_number defines the instance number for SCS
-scs_instance_number = "00"
+scs_instance_number = "01"
 
 # ers_instance_number defines the instance number for ERS
-ers_instance_number = "01"
+ers_instance_number = "02"
 
 # pas_instance_number defines the instance number for PAS
 pas_instance_number = "00"
@@ -339,10 +339,10 @@ scs_server_zones = ["3"]
 # if source_image_id is specified the deployment will use the custom image provided,
 # in this case os_type must also be specified
 scs_server_image = {
-  os_type = "LINUX",
+  os_type = "",
   source_image_id = "",
-  publisher = "RedHat",
-  offer = "RHEL-SAP-HA",
+  publisher = "SUSE",
+  offer = "sles-sap-15-sp3",
   sku = "gen2",
   version = "latest",
   type = "marketplace"
@@ -380,7 +380,7 @@ scs_server_use_avset = false
 #########################################################################################
 
 # application_server_count defines how many application servers to deploy
-application_server_count = 1
+application_server_count = 2
 
 # application_server_zones is an optional list defining the availability zones to which deploy the application servers
 application_server_zones = ["3"]
@@ -424,8 +424,8 @@ application_server_use_avset = true
 application_server_image = {
   os_type = "LINUX",
   source_image_id = "",
-  publisher = "RedHat",
-  offer = "RHEL-SAP-HA",
+  publisher = "SUSE",
+  offer = "sles-sap-15-sp3",
   sku = "gen2",
   version = "latest",
   type = "marketplace"
@@ -552,13 +552,13 @@ ANF_HANA_use_Zones = true
 #########################################################################################
 
 # ANF_HANA_data, if defined, will create Azure NetApp Files volume(s) for HANA data.
-ANF_HANA_data = true
+#ANF_HANA_data = false
 
 # ANF_HANA_data_volume_size, if defined, provides the size of the HANA data volume(s).
-ANF_HANA_data_volume_size = 256
+#ANF_HANA_data_volume_size = 0
 
 # ANF_HANA_data_volume_throughput, if defined, provides the throughput of the HANA data volume(s).
-ANF_HANA_data_volume_throughput = 128
+#ANF_HANA_data_volume_throughput = 0
 
 # Use existing Azure NetApp volumes for HANA data.
 #ANF_HANA_data_use_existing_volume = false
@@ -577,13 +577,13 @@ ANF_HANA_data_volume_count = 1
 #########################################################################################
 
 # ANF_HANA_log, if defined, will create Azure NetApp Files volume(s) for HANA log.
-ANF_HANA_log = true
+#ANF_HANA_log = false
 
 # ANF_HANA_log_volume_size, if defined, provides the size of the HANA log volume(s).
-ANF_HANA_log_volume_size = 128
+#ANF_HANA_log_volume_size = 0
 
 # ANF_HANA_log_volume_throughput, if defined, provides the throughput of the HANA log volume(s).
-ANF_HANA_log_volume_throughput = 64
+#ANF_HANA_log_volume_throughput = 0
 
 # Use existing Azure NetApp volumes for HANA log.
 #ANF_HANA_log_use_existing = false

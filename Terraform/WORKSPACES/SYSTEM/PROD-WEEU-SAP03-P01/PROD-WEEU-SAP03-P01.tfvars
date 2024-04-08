@@ -34,7 +34,7 @@
 #########################################################################################
 
 # The environment value is a mandatory field, it is used for partitioning the environments, for example (PROD and NP)
-environment = "PRD"
+environment = "PROD"
 
 # The location value is a mandatory field, it is used to control where the resources are deployed
 location = "westeurope"
@@ -185,7 +185,7 @@ database_platform = "HANA"
 database_server_count = 1
 
 # database_high_availability is a boolean flag controlling if the database tier is deployed highly available (more than 1 node)
-database_high_availability = false
+database_high_availability = true
 
 # For M series VMs use the SKU name for instance "M32ts"
 # If using a custom disk sizing populate with the node name for Database you have used in the file custom_disk_sizes_filename
@@ -272,7 +272,7 @@ database_vm_image = {
 }
 
 # database_vm_zones is an optional list defining the availability zones to deploy the database servers
-database_vm_zones = ["3"]
+database_vm_zones = ["2"]
 
 # Optional, Defines the default authentication model for the Database VMs (key/password)
 #database_vm_authentication_type = ""
@@ -305,7 +305,7 @@ enable_app_tier_deployment = true
 app_tier_use_DHCP = true
 
 # sid is a mandatory field that defines the SAP Application SID
-sid = "P00"
+sid = "P01"
 
 #########################################################################################
 #                                                                                       #
@@ -320,17 +320,17 @@ scs_server_count = 1
 scs_high_availability = true
 
 # scs_instance_number defines the instance number for SCS
-scs_instance_number = "01"
+scs_instance_number = "00"
 
 # ers_instance_number defines the instance number for ERS
-ers_instance_number = "02"
+ers_instance_number = "01"
 
 # pas_instance_number defines the instance number for PAS
 pas_instance_number = "00"
 
 
 # scs_server_zones is an optional list defining the availability zones to which deploy the SCS servers
-scs_server_zones = ["3"]
+scs_server_zones = ["2"]
 
 # scs_server_sku, if defined provides the SKU to use for the SCS servers
 #scs_server_sku = ""
@@ -339,7 +339,7 @@ scs_server_zones = ["3"]
 # if source_image_id is specified the deployment will use the custom image provided,
 # in this case os_type must also be specified
 scs_server_image = {
-  os_type = "",
+  os_type = "LINUX",
   source_image_id = "",
   publisher = "SUSE",
   offer = "sles-sap-15-sp3",
@@ -383,7 +383,7 @@ scs_server_use_avset = false
 application_server_count = 2
 
 # application_server_zones is an optional list defining the availability zones to which deploy the application servers
-application_server_zones = ["3"]
+application_server_zones = ["2"]
 
 # application_server_sku, if defined provides the SKU to use for the application servers
 #application_server_sku = ""
@@ -407,7 +407,7 @@ app_tier_dual_nics = false
 #app_disk_sizes_filename = null
 
 # Optional, Defines the default authentication model for the Applicatiuon tier VMs (key/password)
-#app_tier_authentication_type = ""
+app_tier_authentication_type = "key"
 
 # application_server_use_ppg defines the that the application server virtual machines will be placed in a proximity placement group
 application_server_use_ppg = true
