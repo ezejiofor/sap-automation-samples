@@ -17,7 +17,7 @@
 # environment="MGMT"
 
 # # The location valus is a mandatory field, it is used to control where the resources are deployed
-# location="westeurope"
+# location="northeurope"
 
 # # RESOURCEGROUP
 # # The two resource group name and arm_id can be used to control the naming and the creation of the resource group
@@ -170,7 +170,7 @@
 # The environment value is a mandatory field, it is used for partitioning the environments, for example, PROD and NP.
 environment = "MGMT"
 # The location/region value is a mandatory field, it is used to control where the resources are deployed
-location = "westeurope"
+location = "northeurope"
 
 #Defines the DNS suffix for the resources
 dns_label = "azure.sdaf.contoso.net"

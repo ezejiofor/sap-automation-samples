@@ -2,7 +2,7 @@
 # bom_base_name: S42023SPS00_v0001ms
 
 # # Name of the key vault containing the S user credentials
-# deployer_kv_name: MGMTWEEUDEP01user321
+# deployer_kv_name: MGMTNOEUDEP01user321
 # # Set the following value to true to calculate checksums for the downloaded files
 # # Not needed for the Microsoft provided BOMs
 # # create_checksums:              true
@@ -19,7 +19,7 @@ bom_base_name:                 S42023SPS00_v0001ms
 BOM_directory:                 ${HOME}/Azure_SAP_Automated_Deployment/samples/SAP
 
 # Name of the key vault containing the S user credentials
-deployer_kv_name: MGMTWEEUDEP01user321
+deployer_kv_name: MGMTNOEUDEP01user321
 
 # Set the following value to true to calculate checksums for the downloaded files
 # Not needed for the Microsoft provided BOMs
@@ -33,7 +33,7 @@ upgrade_packages:              false
 # TERRAFORM CREATED
 sap_fqdn:                      sap.contoso.net                      
 # kv_name is the name of the key vault containing the system credentials
-kv_name:                       MGMTWEEUDEP01user321
+kv_name:                       MGMTNOEUDEP01user321
 
 
 

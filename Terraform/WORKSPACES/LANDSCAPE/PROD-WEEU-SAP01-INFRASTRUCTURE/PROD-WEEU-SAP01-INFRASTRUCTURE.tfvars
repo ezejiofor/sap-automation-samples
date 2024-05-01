@@ -28,7 +28,7 @@
 environment = "DEV"
 
 # The location value is a mandatory field, it is used to control where the resources are deployed
-location = "westeurope"
+location = "northeurope"
 
 #If you want to provide a custom naming json use the following parameter.
 #name_override_file = ""

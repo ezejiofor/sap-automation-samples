@@ -2,32 +2,32 @@
 
 This folder contains a sample deployer configuration.
 
-## MGMT-WEEU-DEP00-INFRASTRUCTURE ##
+## MGMT-NOEU-DEP00-INFRASTRUCTURE ##
 
 This configuration deploys a deployer with the following components:
 
 
 | Component                            | Virtual Machine Name                  | Location        | Details                                                       |
 | ------------------------------------ | ------------------------------------- | ----------------| ------------------------------------------------------------- |
-| Resource Group                       | MGMT-WEEU-DEP00-INFRASTRUCTURE        | westeurope      |                                                               |
+| Resource Group                       | MGMT-NOEU-DEP00-INFRASTRUCTURE        | northeurope      |                                                               |
 |                                      |                                       |                 |                                                               |
-| Virtual Network                      | MGMT-WEEU-DEP00-vnet                  | westeurope      | Address space:     10.170.20.0/24                             |
-| Subnet (management)                  | MGMT-WEEU-DEP00_deployment-subnet     | westeurope      | Address space:     10.170.20.64/28                            |
-| Subnet (firewall)                    | AzureFirewallSubnet                   | westeurope      | Address space:     10.170.20.0/26                             |
-| Subnet (bastion)                     | AzureBastionSubnet                    | westeurope      | Address space:     10.170.20.128/26                           |
-| Subnet (webapp)                      | AzureWebappSubnet                     | westeurope      | Address space:     10.170.20.80/28                            |
-| Route table                          | MGMT-WEEU-DEP00_route-table           | westeurope      |                                                               |
-| Network security group               | MGMT-WEEU-DEP00_deployment-nsg        | westeurope      |                                                               |
+| Virtual Network                      | MGMT-NOEU-DEP00-vnet                  | northeurope      | Address space:     10.170.20.0/24                             |
+| Subnet (management)                  | MGMT-NOEU-DEP00_deployment-subnet     | northeurope      | Address space:     10.170.20.64/28                            |
+| Subnet (firewall)                    | AzureFirewallSubnet                   | northeurope      | Address space:     10.170.20.0/26                             |
+| Subnet (bastion)                     | AzureBastionSubnet                    | northeurope      | Address space:     10.170.20.128/26                           |
+| Subnet (webapp)                      | AzureWebappSubnet                     | northeurope      | Address space:     10.170.20.80/28                            |
+| Route table                          | MGMT-NOEU-DEP00_route-table           | northeurope      |                                                               |
+| Network security group               | MGMT-NOEU-DEP00_deployment-nsg        | northeurope      |                                                               |
 |                                      |                                       |                 |                                                               |
-| Firewall                             | MGMT-WEEU-DEP00_firewall              | westeurope      |                                                               |
-| Firewall public IP                   | MGMT-WEEU-DEP00_firewall-pip          | westeurope      |                                                               |
+| Firewall                             | MGMT-NOEU-DEP00_firewall              | northeurope      |                                                               |
+| Firewall public IP                   | MGMT-NOEU-DEP00_firewall-pip          | northeurope      |                                                               |
 |                                      |                                       |                 |                                                               |
-| Bastion                              | MGMT-WEEU-DEP00_bastion-host          | westeurope      |                                                               |
-| Bastion public IP                    | MGMT-WEEU-DEP00_bastion-pip           | westeurope      |                                                               |
+| Bastion                              | MGMT-NOEU-DEP00_bastion-host          | northeurope      |                                                               |
+| Bastion public IP                    | MGMT-NOEU-DEP00_bastion-pip           | northeuropee      |                                                               |
 |                                      |                                       |                 |                                                               |
-| Key Vault                            | MGMTWEEUDEP00user###                  | westeurope      |                                                               |
+| Key Vault                            | MGMTNOEUDEP00user###                  | northeurope      |                                                               |
 |                                      |                                       |                 |                                                               |
-| Virtual Machine (deployer)           | MGMT-WEEU-DEP00_mgmtweeudep00deploy00 | westeurope      | Standard D4ds v4, Ubuntu 20.04                                |
+| Virtual Machine (deployer)           | MGMT-NOEU-DEP00_mgmtnoeudep00deploy00 | northeurope      | Standard D4ds v4, Ubuntu 20.04                                |
 |                                      |                                       |                 |                                                               |
-| Application Service Plan             | mgmt-weeu-app-service-plan###         | westeurope      |                                                               |
-| Application Service                  | mgmt-weeu-sapdeployment###            | westeurope      |                                                               |
+| Application Service Plan             | mgmt-noeu-app-service-plan###         | northeurope      |                                                               |
+| Application Service                  | mgmt-noeu-sapdeployment###            | northeurope      |                                                               |

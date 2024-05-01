@@ -19,20 +19,20 @@
     },
     "keyvault_names": {
         "DEPLOYER": {
-            "private_access": "DEVWEEUprvt86D",
-            "user_access": "DEVWEEUuser86D"
+            "private_access": "DEVNOEUprvt86D",
+            "user_access": "DEVNOEUuser86D"
         },
         "LIBRARY": {
-            "private_access": "DEVWEEUSAPLIBprvt86D",
-            "user_access": "DEVWEEUSAPLIBuser86D"
+            "private_access": "DEVNOEUSAPLIBprvt86D",
+            "user_access": "DEVNOEUSAPLIBuser86D"
         },
         "SDU": {
-            "private_access": "DEVWEEUSAP01X00p86D",
-            "user_access": "DEVWEEUSAP01X00u86D"
+            "private_access": "DEVNOEUSAP01X00p86D",
+            "user_access": "DEVNOEUSAP01X00u86D"
         },
         "WORKLOAD_ZONE": {
-            "private_access": "DEVWEEUSAP01prvt86D",
-            "user_access": "DEVWEEUSAP01user86D"
+            "private_access": "DEVNOEUSAP01prvt86D",
+            "user_access": "DEVNOEUSAP01user86D"
         }
     },
     "ppg_names": [
@@ -40,10 +40,10 @@
         "-z2-ppg"
     ],
     "prefix": {
-        "DEPLOYER": "DEV-WEEU-",
-        "LIBRARY": "DEV-WEEU",
-        "SDU": "DEV-WEEU-SAP01-X00",
-        "WORKLOAD_ZONE": "DEV-WEEU-SAP01"
+        "DEPLOYER": "DEV-NOEU-",
+        "LIBRARY": "DEV-NOEU",
+        "SDU": "DEV-NOEU-SAP01-EQ2",
+        "WORKLOAD_ZONE": "DEV-NOEU-SAP01"
     },
     "resource_prefixes": {
         "admin_nic": "",
@@ -291,17 +291,17 @@
     },
     "separator": "_",
     "storageaccount_names": {
-        "DEPLOYER": "devweeudiag86d",
+        "DEPLOYER": "devnoeudiag86d",
         "LIBRARY": {
-            "library_storageaccount_name": "devweeusaplib86d",
-            "terraformstate_storageaccount_name": "devweeutfstate86d"
+            "library_storageaccount_name": "devnoeusaplib86d",
+            "terraformstate_storageaccount_name": "devnoeutfstate86d"
         },
-        "SDU": "devweeusap01diag86d",
+        "SDU": "devnoeusap01diag86d",
         "WORKLOAD_ZONE": {
-            "landscape_shared_install_storage_account_name": "devweeusap01install86d",
-            "landscape_shared_transport_storage_account_name": "devweeusap01transport86d",
-            "landscape_storageaccount_name": "devweeusap01diag86d",
-            "witness_storageaccount_name": "devweeusap01witness86d"
+            "landscape_shared_install_storage_account_name": "devnoeusap01install86d",
+            "landscape_shared_transport_storage_account_name": "devnoeusap01transport86d",
+            "landscape_storageaccount_name": "devnoeusap01diag86d",
+            "witness_storageaccount_name": "devnoeusap01witness86d"
         }
     },
     "virtualmachine_names": {
@@ -342,7 +342,7 @@
             "x00app02l86d"
         ],
         "DEPLOYER": [
-            "devweeudeploy01"
+            "devnoeudeploy01"
         ],
         "HANA_COMPUTERNAME": [
             "x00dhdb01l086",
@@ -357,7 +357,7 @@
             "x00dhdb01l186d"
         ],
         "ISCSI_COMPUTERNAME": [
-            "devsap01weeuiscsi00"
+            "devsap01noeuiscsi00"
         ],
         "OBSERVER_COMPUTERNAME": [
             "x00observer01l86d",
