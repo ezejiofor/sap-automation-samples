@@ -170,7 +170,7 @@
 # The environment value is a mandatory field, it is used for partitioning the environments, for example, PROD and NP.
 environment = "MGMT"
 # The location/region value is a mandatory field, it is used to control where the resources are deployed
-location = "northeurope"
+location = "westeurope"
 
 #Defines the DNS suffix for the resources
 dns_label = "azure.sdaf.contoso.net"
